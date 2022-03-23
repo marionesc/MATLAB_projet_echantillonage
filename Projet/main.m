@@ -4,31 +4,55 @@
 ##                    YOHANN DELAVEAUX
 ##                    JULIEN ARNAUDIES
 ##
-## Created: 2022-02-11
-##
-## This program is free software: you can redistribute it and/or modify
-## it under the terms of the GNU General Public License as published by
-## the Free Software Foundation, either version 3 of the License, or
-## (at your option) any later version.
-##
-## This program is distributed in the hope that it will be useful,
-## but WITHOUT ANY WARRANTY; without even the implied warranty of
-## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-## GNU General Public License for more details.
-##
-## You should have received a copy of the GNU General Public License
-## along with this program.  If not, see <https://www.gnu.org/licenses/>.
+## Created: 2022-03-23
 
+%%%%%%%%%%%%%%%%%%%%
+%% INITIALIZATION %%
+%%%%%%%%%%%%%%%%%%%%
+%% Initialization of global message
+CHOICE_MODE_MESSAGE = 'Choississez le mode que vous souhaitez lancer.'
+DEMO_MESSAGE = 'Vous etes dans le mode démo.'
+PROJECT_MESSAGE = 'vous etes dans le mode projet. \n Choississez votre mode.'
 
+%% Initialization of globals constants
+DEMO_SAMPLING_RATE = 2
+DEMO_SAMPLING_TIME = 10
+DEMO_SAMPLING_FREQUENCY = 10
+
+%%%%%%%%%%%%%%%
+%% MAIN CODE %%
+%%%%%%%%%%%%%%%  
+%% Print command interface message for the project's start
 display("Lancement interface d'utilisation du projet") 
 
-start = menu('Choix du mode', 'interpolation', 'zero-padding', 'lineaire'); 
-
-switch(start)                                                                   % Lancement de menu de démarrage
-  case 1                                                                        % Choix du mode
+%% First menu for the choice between Demo and Project mode
+modeChoice = questdlg(CHOICE_MODE_MESSAGE, 'choix du mode', ...
+                'Demo', 'Projet','Quitter', 'Projet') 
+switch(modeChoice)
+  case 1 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% enter on demo mode interface
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    demoMode = menu(DEMO_MESSAGE,'1', '2', '3')
     
-  case 2
-  
+  case 2 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% enter on the project mode interface
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    projectMode = menu(PROJECT_MESSAGE, 'interpolation', 'zero-padding', 'lineaire');
+    switch(projectMode)                                                                   
+      case 1 
+        %% enter on interpolation vision
+        
+      case 2
+        %% enter on zero-padding vision
+        
+      case 3
+        %% enter on linear vision
+    end
+
   case 3
-  
-end 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% Quit the glabal project (break)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ end 
