@@ -1,0 +1,62 @@
+**********************************************************************************************************
+**********************************************************************************************************
+** Copyright (C) 2022 MARION ESCOUTELOUP								**
+**                    THEO FAURE									**
+**                    ETIENNE MATTEOS									**
+**                    YOHANN DELAVEAUX									**
+**                    JULIEN ARNAUDIES									**
+**													**
+** Created: 2022-03-23											**
+**													**
+**													**
+**********************************************************************************************************
+**********************************************************************************************************
+**													**
+** 					   PROJET MATLAB						**
+**		SUJET 1 : Surechantillonage d'un signal par techniques d'interpolation 			**
+**													**
+** CESI A3 - S3E											**
+**********************************************************************************************************
+**********************************************************************************************************
+
+Fonction générique matlab utilisé : 
+***********************************
+	- load 'fichier': permet de télécharger et utiliser les datas contenu dans le fichier 'fichier'
+ex : load signal1
+
+	- display() : Permet d'afficher sur l'interface de commande matlab/octave un texte 
+ex : display("Bonjour")
+
+	- questiondlg() : permet de faire apparaitre un menu de plusieurs boutons de sélection
+ex : menuPrincipale = questiondlg("Menu Principale", 	// mise en forme supérieur de l'interface	
+				  "Choix du mode", ...	// mise en forme du corps de l'interface
+				  " Bouton 1 ", 	// mise en forme du premier bouton 
+				  " Bouton 2 ", 	// mise en forme du bouton 2
+				  " Quitter ")		// Mise en forme du 3eme bouton
+ 
+	- menu() : permet d'afficher une interface de menu déroulant
+ex : menu = menu("Choix du mode", 			// mise en forme du corps de l'interface
+		 " Choix 1 ", 				// 1er choix de la liste
+		 " Choix 2 ", 				// 2e choix de la liste 
+		 " Choix x ") 				// choix x de la liste
+
+	- switch() ... case  :  fonction conditionnel exicutant une certaine partie du code en fonction 
+				de la valeur d'une variable choisie
+
+
+
+
+Règle de mise en forme appliqué : convention CAMEL CASE 
+*******************************************************
+- Pour les variables constantes	--> en variable gloable du fichier main.m
+	ECRITURE : CECI_EST_UNE_CONSTANTE 
+  
+- Pour les varables locales 	--> au plus proche du besoin
+	ECRITURE : ceciEstUneVariableLocale 
+  
+- Pour les fonctions 		--> Dans le fichier .m correspondant (meme nom que le fichier)
+	ECRITURE : nom_fonction
+	CONVENTION 1 : si la fonction a pour but d'obtenir une valeur alors préfice get
+	CONVENTION 2 : si la fonction a pour but f=d'appliquer une valeur alors préfice set
+	
+		

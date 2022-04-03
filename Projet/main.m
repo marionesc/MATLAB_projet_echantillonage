@@ -5,7 +5,10 @@
 ##                    JULIEN ARNAUDIES
 ##
 ## Created: 2022-03-23
+clear all; 
+close all; 
 
+load signal1; 
 %%%%%%%%%%%%%%%%%%%%
 %% INITIALIZATION %%
 %%%%%%%%%%%%%%%%%%%%
@@ -14,10 +17,9 @@ CHOICE_MODE_MESSAGE = 'Choississez le mode que vous souhaitez lancer.'
 DEMO_MESSAGE = 'Vous etes dans le mode démo.'
 PROJECT_MESSAGE = 'vous etes dans le mode projet. \n Choississez votre mode.'
 
-%% Initialization of globals constants
-DEMO_SAMPLING_RATE = 2
-DEMO_SAMPLING_TIME = 10
-DEMO_SAMPLING_FREQUENCY = 10
+%% Initialization of others variables
+DEMO = 0;
+PROJECT = 1;
 
 %%%%%%%%%%%%%%%
 %% MAIN CODE %%
@@ -25,17 +27,17 @@ DEMO_SAMPLING_FREQUENCY = 10
 %% Print command interface message for the project's start
 display("Lancement interface d'utilisation du projet") 
 
-%% First menu for the choice between Demo and Project mode
-modeChoice = questdlg(CHOICE_MODE_MESSAGE, 'choix du mode', ...
+  %% First menu for the choice between Demo and Project mode
+  modeChoice = questdlg(CHOICE_MODE_MESSAGE, 'choix du mode', ...
                 'Demo', 'Projet','Quitter', 'Projet') 
 switch(modeChoice)
-  case 1 
+  case 'Demo' 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% enter on demo mode interface
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    demoMode = menu(DEMO_MESSAGE,'1', '2', '3')
-    
-  case 2 
+    linear_mode(DEMO);
+  
+  case 'Projet' 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% enter on the project mode interface
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,8 +53,8 @@ switch(modeChoice)
         %% enter on linear vision
     end
 
-  case 3
+  case 'Quitter'
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% Quit the glabal project (break)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- end 
+end
