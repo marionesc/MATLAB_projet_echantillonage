@@ -1,6 +1,6 @@
 ## Copyright (C) 2022 MARION ESCOUTELOUP
 ##                    THEO FAURE
-##                    ETIENNE MATTEOS
+##                    ETIENNE MATEOS
 ##                    YOHANN DELAVEAUX
 ##                    JULIEN ARNAUDIES
 ##
@@ -36,6 +36,7 @@ switch(modeChoice)
     %% enter on demo mode interface
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     linear_mode(DEMO);
+    
   
   case 'Projet' 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -45,12 +46,13 @@ switch(modeChoice)
     switch(projectMode)                                                                   
       case 1 
         %% enter on interpolation vision
-        
+        inter_mode();
       case 2
         %% enter on zero-padding vision
-        
+        zero_padding_mode();
       case 3
         %% enter on linear vision
+        linear_mode(PROJECT);
     end
 
   case 'Quitter'
