@@ -1,6 +1,6 @@
 ## Copyright (C) 2022 MARION ESCOUTELOUP
 ##                    THEO FAURE
-##                    ETIENNE MATEOS
+##                    ETIENNE MATcd Desk  EOS
 ##                    YOHANN DELAVEAUX
 ##                    JULIEN ARNAUDIES
 ##
