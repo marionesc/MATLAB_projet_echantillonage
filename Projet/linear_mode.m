@@ -28,10 +28,10 @@ function linear_mode(modeChoice = 1)
       % Entree des valeurs du Mode PROJECT par l'utilisateur
       projectSamplingFrequency = str2double(
                                  inputdlg({'Sampling frequency :'}, ...
-                                           ' entrée des valeurs utilisateurs', [1 30]));
+                                           ' Enter user values', [1 30]));
       projectSamplingTime = str2double(
                             inputdlg({'Sampling Time :'}, ...
-                                      ' entrée des valeurs utilisateurs', [1 30]));
+                                      'Enter user values', [1 30]));
 
 
     
@@ -51,23 +51,23 @@ function linear_mode(modeChoice = 1)
  %%%                      AFFICHAGE DES RESULTATS                      %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Ajout d'une possibilité de configuration de la figure par l'utilisateur
-   legengeSettings = questdlg('Voulez vous personnaliser les legendes ?', 'Legende', ...
-                              'Oui','Non', 'Non') 
+   legengeSettings = questdlg('Do you want to change the captions?', 'Caption', ...
+                              'Yes','No', 'No') 
   
 
   switch(legengeSettings)
-    case 'Oui'         
-      xTitle = inputdlg({'Legende x de la figure :'}, ...
-                         'Legende - Paramètres avancés', [1 30]);
-      yTitle = inputdlg({'Legende y de la figure:'}, ...
-                         'Legende - Paramètres avancés', [1 30]);
-      figureTitle = inputdlg({'Titre de la figure:'}, ...
-                              'Legende - Paramètres avancés', [1 30]);
+    case 'Yes'         
+      xTitle = inputdlg({'Caption x of the figure:'}, ...
+                         'Caption - Advanced settings', [1 30]);
+      yTitle = inputdlg({'Caption y of the figure:'}, ...
+                         'Caption - Advanced settings', [1 30]);
+      figureTitle = inputdlg({'Figure title:'}, ...
+                              'Caption - Advanced settings', [1 30]);
    
-    case 'Non'
-      xTitle = 'Temps t [s]';
+    case 'No'
+      xTitle = 'Time t [s]';
       yTitle = 'Amplitude';
-      figureTitle = 'amplitude du signal en fonction du temps';
+      figureTitle = 'amplitude of the signal as a function of time';
   end
   
   %affichage de la figure avec en intégrant la configuration précédente
@@ -79,6 +79,6 @@ function linear_mode(modeChoice = 1)
   title(figureTitle);        
   xlabel(xTitle);                  
   ylabel(yTitle);   
-  legend("signal d'origine", "signal sur-echantillone");
+  legend("Original signal", "Over-sampled signal");
   
 endfunction
