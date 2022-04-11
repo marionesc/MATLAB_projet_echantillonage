@@ -16,16 +16,16 @@ function zero_padding_mode()
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   projectSamplingRate = str2double(
                         inputdlg({'Sampling Rate :'}, ...
-                                  ' entrée des valeurs utilisateurs', [1 30]));
+                                  'Enter user values', [1 30]));
   projectSamplingTime = str2double(
                         inputdlg({'Sampling Time :'}, ...
-                                  ' entrée des valeurs utilisateurs', [1 30]));
+                                  'Enter user values', [1 30]));
   projectSamplingFrequency = str2double(
                              inputdlg({'Sampling frequency :'}, ...
-                                       ' entrée des valeurs utilisateurs', [1 30]));
+                                       'Enter user values', [1 30]));
   projectBitDelete = str2double(
-                     inputdlg({'Nuber of Bit delete :'}, ...
-                               ' entrée des valeurs utilisateurs', [1 30]));
+                     inputdlg({'Number of Bit deleted :'}, ...
+                               'Enter user values', [1 30]));
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%      CALCULS &CONFIGURATIONS - MODE ZERO-PADDING (PROJECT ONLY)      %%%
@@ -40,21 +40,21 @@ function zero_padding_mode()
  %%%     AFFICHAGE DE(S) FIGURE(S) - MODE ZERO-PADDING (PROJECT ONLY)     %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  % Ajout d'une possibilité de configuration de la figure par l'utilisateur
- legengeSettings = questdlg('Voulez vous personnaliser les legendes ?', 'Legende', ...
-                            'Oui','Non', 'Non') 
+ legengeSettings = questdlg('Do you want to customize the legends?', 'Legende', ...
+                            'Yes','No', 'No') 
  switch(legengeSettings)
     case 'Oui'         
-      xTitle = inputdlg({'Legende x de la figure :'}, ...
-                         'Legende - Paramètres avancés', [1 30]);
-      yTitle = inputdlg({'Legende y de la figure:'}, ...
-                         'Legende - Paramètres avancés', [1 30]);
-      figureTitle = inputdlg({'Titre de la figure:'}, ...
-                              'Legende - Paramètres avancés', [1 30]);
+      xTitle = inputdlg({'Caption x of the figure:'}, ...
+                         'Caption - Advanced settings', [1 30]);
+      yTitle = inputdlg({'Legende y of the figure:'}, ...
+                         'Caption - Advanced settings', [1 30]);
+      figureTitle = inputdlg({'Figure title:'}, ...
+                              'Caption - Advanced settings', [1 30]);
                             
-    case 'Non'
-      xTitle = 'Temps t [s]';
+    case 'No'
+      xTitle = 'Time t [s]';
       yTitle = 'Amplitude';
-      figureTitle = 'amplitude du signal en fonction du temps';
+      figureTitle = 'amplitude of the signal as a function of time';
   end
   
   %affichage de la figure avec en intégrant la configuration précédente
@@ -66,7 +66,7 @@ function zero_padding_mode()
   title(figureTitle);        
   xlabel(xTitle);                  
   ylabel(yTitle);   
-  legend("signal d'origine", "signal sur-echantillone");
+  legend("Original signal", "Over-sampled signal");
   
 
 endfunction
