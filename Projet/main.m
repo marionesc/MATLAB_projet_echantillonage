@@ -15,7 +15,7 @@ load signal1;
 %% Initialization of global message
 CHOICE_MODE_MESSAGE = 'Choisissez le mode que vous souhaitez lancer.'
 DEMO_MESSAGE = 'Vous etes dans le mode démo.'
-PROJECT_MESSAGE = 'vous etes dans le mode projet. \n Choississez votre mode.'
+PROJECT_MESSAGE = 'vous etes dans le mode projet. \n Choisissez votre mode.'
 
 %% Initialization of others variables
 DEMO = 0;
