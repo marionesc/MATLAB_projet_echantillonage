@@ -13,9 +13,9 @@ load signal1;
 %% INITIALIZATION %%
 %%%%%%%%%%%%%%%%%%%%
 %% Initialization of global message
-CHOICE_MODE_MESSAGE = 'Choississez le mode que vous souhaitez lancer.'
-DEMO_MESSAGE = 'Vous etes dans le mode démo.'
-PROJECT_MESSAGE = 'vous etes dans le mode projet. \n Choississez votre mode.'
+CHOICE_MODE_MESSAGE = 'Choose the mode you want to launch.'
+DEMO_MESSAGE = 'You are in demo mode.'
+PROJECT_MESSAGE = 'You are in project mode. \n Choose the mode.'
 
 %% Initialization of others variables
 DEMO = 0;
@@ -25,11 +25,11 @@ PROJECT = 1;
 %% MAIN CODE %%
 %%%%%%%%%%%%%%%  
 %% Print command interface message for the project's start
-display("Lancement interface d'utilisation du projet") 
+display("Launch project user interface") 
 
   %% First menu for the choice between Demo and Project mode
-  modeChoice = questdlg(CHOICE_MODE_MESSAGE, 'choix du mode', ...
-                'Demo', 'Projet','Quitter', 'Projet') 
+  modeChoice = questdlg(CHOICE_MODE_MESSAGE, 'choose of mode', ...
+                'Demo', 'Project','Quit', 'Project') 
 switch(modeChoice)
   case 'Demo' 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,11 +38,11 @@ switch(modeChoice)
     linear_mode(DEMO);
     
   
-  case 'Projet' 
+  case 'Project' 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% enter on the project mode interface
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    projectMode = menu(PROJECT_MESSAGE, 'interpolation', 'zero-padding', 'lineaire');
+    projectMode = menu(PROJECT_MESSAGE, 'interpolation', 'zero-padding', 'linear');
     switch(projectMode)                                                                   
       case 1 
         %% enter on interpolation vision
@@ -55,8 +55,8 @@ switch(modeChoice)
         linear_mode(PROJECT);
     end
 
-  case 'Quitter'
+  case 'Quit'
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %% Quit the glabal project (break)
+    %% Quit the global project (break)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 end
