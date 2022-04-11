@@ -13,7 +13,7 @@ load signal1;
 %% INITIALIZATION %%
 %%%%%%%%%%%%%%%%%%%%
 %% Initialization of global message
-CHOICE_MODE_MESSAGE = 'Choississez le mode que vous souhaitez lancer.'
+CHOICE_MODE_MESSAGE = 'Choisissez le mode que vous souhaitez lancer.'
 DEMO_MESSAGE = 'Vous etes dans le mode démo.'
 PROJECT_MESSAGE = 'vous etes dans le mode projet. \n Choississez votre mode.'
 
