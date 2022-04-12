@@ -7,8 +7,10 @@
 ## Created: 2022-03-23
 
 %  modeChoice = 1 : pour pouvoir débugger seulement ce fichier si besoin en mode project
+
 function linear_mode(modeChoice = 1)  
  SAMPLING_RATE = 2; % imposé pour le mode lineaire
+ 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%                    CONFIGURATION EN FONCTION DU MODE                %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -26,12 +28,10 @@ function linear_mode(modeChoice = 1)
 
     case 1 % PROJECT
       % Entree des valeurs du Mode PROJECT par l'utilisateur
-      projectSamplingFrequency = str2double(
-                                 inputdlg({'Sampling frequency :'}, ...
-                                           ' Enter user values', [1 30]));
-      projectSamplingTime = str2double(
-                            inputdlg({'Sampling Time :'}, ...
-                                      'Enter user values', [1 30]));
+      projectSamplingFrequency = str2num(inputdlg({'Sampling Frequency :'}, ...
+                                                   'User values inputs', [1 30]));
+      projectSamplingTime = str2num(inputdlg({'Sampling Time :'}, ...
+                                              'User values inputs', [1 30]));
 
 
     

@@ -14,15 +14,12 @@ function inter_mode()
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%  ENTREE DES VALEURS UTILISATEUR - MODE INTERPOLATION (PROJECT ONLY)  %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  projectSamplingRate = str2double(
-                        inputdlg({'Sampling Rate :'}, ...
-                                  'Enter user values', [1 30]));
-  projectSamplingTime = str2double(
-                        inputdlg({'Sampling Time :'}, ...
-                                  'Enter user values', [1 30]));
-  projectSamplingFrequency = str2double(
-                             inputdlg({'Sampling frequency :'}, ...
-                                       'Enter user values', [1 30]));
+  projectSamplingRate = str2num(inputdlg({'Sampling Rate :'}, ...
+                                          'User values inputs', [1 30]));
+  projectSamplingTime = str2num(inputdlg({'Sampling Time :'}, ...
+                                          'User values inputs', [1 30]));
+  projectSamplingFrequency = str2num(inputdlg({'Sampling frequency :'}, ...
+                                               'User values inputs', [1 30]));
 
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -48,19 +45,19 @@ function inter_mode()
                          'Caption - Advanced settings', [1 30]);
       figureTitle = inputdlg({'Figure title:'}, ...
                               'Caption - Advanced settings', [1 30]);
-                            
+
     case 'No'
       xTitle = 'Time t [s]';
       yTitle = 'Amplitude';
       figureTitle = 'Amplitude of the signal as a function of time';
   end
-  
+
   %affichage de la figure avec en intégrant la configuration précédente
   close all; 
   plot(x,y ,'r')          % signal d'origine
   hold on 
   plot(x_2, y_2, 'b')     % signal sur-echantillone
-  
+
   title(figureTitle);        
   xlabel(xTitle);                  
   ylabel(yTitle);   

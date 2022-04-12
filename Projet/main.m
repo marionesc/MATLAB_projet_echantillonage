@@ -9,13 +9,16 @@ clear all;
 close all; 
 
 load signal1; 
+plot(t, y); 
+
 %%%%%%%%%%%%%%%%%%%%
 %% INITIALIZATION %%
 %%%%%%%%%%%%%%%%%%%%
 %% Initialization of global message
-CHOICE_MODE_MESSAGE = 'Choose the mode you want to launch.'
-DEMO_MESSAGE = 'You are in demo mode.'
-PROJECT_MESSAGE = 'You are in project mode. \n Choose the mode.'
+CHOICE_MODE_MESSAGE =   'Choose the mode do you want to launch.'
+DEMO_MESSAGE =          'You are in demo mode.'
+PROJECT_MESSAGE =       'You are in project mode. Choose the mode.'
+INPUT_INTERFACE_TITLE = 'User values inputs'
 
 %% Initialization of others variables
 DEMO = 0;
@@ -27,9 +30,10 @@ PROJECT = 1;
 %% Print command interface message for the project's start
 display("Launch project user interface") 
 
-  %% First menu for the choice between Demo and Project mode
-  modeChoice = questdlg(CHOICE_MODE_MESSAGE, 'choose of mode', ...
-                'Demo', 'Project','Quit', 'Project') 
+%% First menu for the choice between Demo and Project mode
+modeChoice = questdlg(CHOICE_MODE_MESSAGE, 'Mode choice', ...
+                      'Demo', 'Project','Quit', 'Project') 
+                        
 switch(modeChoice)
   case 'Demo' 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,9 +50,11 @@ switch(modeChoice)
     switch(projectMode)                                                                   
       case 1 
         %% enter on interpolation vision
+        remove_bits(y,t);
         inter_mode();
       case 2
         %% enter on zero-padding vision
+        remove_bits(y,t); 
         zero_padding_mode();
       case 3
         %% enter on linear vision

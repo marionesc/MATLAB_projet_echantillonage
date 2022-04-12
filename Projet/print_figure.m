@@ -1,23 +1,23 @@
 function print_figure()
-  legengeSettings = questdlg('Do you want to customize the captions?', 'Légende', ...
-                'Yes','No', 'No') 
+  legengeSettings = questdlg('Voulez vous personnaliser les légendes ?', 'Légende', ...
+                'Oui','Non', 'Non') 
   
   switch(legengeSettings)
-    case 'Yes'         
-      userInput0 = inputdlg({'Caption x :'}, ...
-                            'Caption - Advanced settings', [1 30]);
-      userInput1 = inputdlg({'Caption y :'}, ...
-                            'Caption - Advanced settings', [1 30]);
+    case 'Oui'         
+      userInput0 = inputdlg({'Legende x :'}, ...
+                            'Legende - Paramètres avancés', [1 30]);
+      userInput1 = inputdlg({'Legende y :'}, ...
+                            'Legende - Paramètres avancés', [1 30]);
       userInput2 = inputdlg({'Titre :'}, ...
-                            'Caption - Advanced settings', [1 30]);
+                            'Legende - Paramètres avancés', [1 30]);
       xTitle = userInput0;
       yTitle = userInput1;
       figureTitle = userInput2;    
    
-    case 'No'
-      xTitle = 'Value of x';
-      yTitle = 'Value of y';
-      figureTitle = 'Values of f(x) --> x ';
+    case 'Non'
+      xTitle = 'valeur de x';
+      yTitle = 'valeur de y';
+      figureTitle = 'valeurs de f(x) --> x ';
   end
   
   xlabel(xTitle); 
