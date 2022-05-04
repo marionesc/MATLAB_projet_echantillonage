@@ -6,21 +6,50 @@
 ##
 ## Created: 2022-04-11
 
-function remove_bit(y, t)
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%  INITIALIZATION OF GLOBAL MESSAGE AND VALUES  %%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  nRemoveMessage = 'How many bits do you want remove ?'
-  nBits = 'How many bits do you want as oversampling rate ?'
-  nBitsDefault = 2; 
-
-  userInput = inputdlg({nRemoveMessage, nBits}, ...
-                        'User values inputs', [1,20 ; 1,20],{'',nBitsDefault});
+function remove_bits(projectMode = 3)
+  load signal1; 
+  ySize = length(y);
+  display(ySize);
+  y_t = y; 
   
-  numberOfDelete = str2num(cell2mat(userInput(2)));
-  overSamplingRate = str2num(cell2mat(userInput(1))); 
+  %% INITALIZATION OF MESSAGE
+  nRemoveMessage = "number of bit to delete "; 
+  samplingRateMessage = "Sampling rate ";
   
-  for i = 0 : size(y)
-    yBit = bitshift(y, -numberOfDelete);    
-  endfor
+  switch(projectMode)
+    %%%%%%%%%%%%%%%%%%%%%%%
+    %%%%% INTERP MODE %%%%%
+    case 1 
+         userInput = inputdlg({nRemoveMessage,samplingRateMessage},  ...
+                              "User values inputs", [1,20 ; 1,20]);
+         numberOfDelete = str2num(cell2mat(userInput(1)));
+         samplingRate   = str2num(cell2mat(userInput(2)));
+        
+         for i = 0 : ySize 
+            yBit = bitshift(y_t, -numberOfDelete);    
+         endfor  
+         
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%% ZERO-PADDING MODE %%%%%         
+    case 2      
+         userInput = inputdlg({nRemoveMessage,samplingRateMessage},  ...
+                              "User values inputs", {[1,20],[1,20]}, {2, 2});
+         numberOfDelete = str2num(cell2mat(userInput(1)));
+         samplingRate   = str2num(cell2mat(userInput(2)));
+         for i = 0 : ySize
+            yBit = bitshift(y_t, -numberOfDelete);    
+         endfor
+         
+    %%%%%%%%%%%%%%%%%%%%%%%
+    %%%%% LINEAR MODE %%%%%
+    case 3 
+         userInput = inputdlg(nRemoveMessage, ...
+                              'User values inputs', [1,20],{2});
+         numberOfDelete = str2num(cell2mat(userInput(1)));
+         for i = 0 : ySize
+            yBit = bitshift(y, -numberOfDelete);    
+         endfor
+         plot(t, yBit)
+         linear_mode(1, t , y, yBit);
+    end
 endfunction

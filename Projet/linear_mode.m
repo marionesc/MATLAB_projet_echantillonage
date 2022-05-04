@@ -8,9 +8,10 @@
 
 %  modeChoice = 1 : pour pouvoir débugger seulement ce fichier si besoin en mode project
 
-function linear_mode(modeChoice = 1)  
+function linear_mode(modeChoice = 1, t, y, yBit)  
  SAMPLING_RATE = 2; % imposé pour le mode lineaire
- 
+ yLenght = length(y); 
+ ySize = size(y); 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%                    CONFIGURATION EN FONCTION DU MODE                %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,23 +29,30 @@ function linear_mode(modeChoice = 1)
 
     case 1 % PROJECT
       % Entree des valeurs du Mode PROJECT par l'utilisateur
-      projectSamplingFrequency = str2num(inputdlg({'Sampling Frequency :'}, ...
-                                                   'User values inputs', [1 30]));
-      projectSamplingTime = str2num(inputdlg({'Sampling Time :'}, ...
-                                              'User values inputs', [1 30]));
-
-
+      prompt1 = "Sampling Frequency";
+      prompt2 = "Sampling Time ";
+      userInput = inputdlg({prompt1, prompt2},...
+                           'User values inputs', [1,30 ; 1,30], {1000, 1});
+                            
+      projectSamplingFrequency = str2num(cell2mat(userInput(1)));
+      projectSamplingTime = str2num(cell2mat(userInput(2)));
     
       % Calculs des autres valeurs nessaires
       samplingTime = projectSamplingTime;
       samplingPeriod = 1/projectSamplingFrequency; 
-      samplingXAxis = [0 : samplingPeriod : projectSamplingTime];
-      samplingYAxis = sin(pi/2*samplingXAxis);
-  end
+      samplingXAxis = t;
+      samplingYAxis = yBit; 
+    end
   
   % Sur echantillonage du signal 
   samplingXAxis_2 = [0 : samplingPeriod/2 : samplingTime]
-  samplingYAxis_2 = sin(pi/2*samplingXAxis_2);
+  for i = 1 : yLenght
+    ydPosition = (2 * i) - 1; 
+    samplingYAxis_2(ydPosition) = samplingYAxis(i)
+    if i < yLenght 
+      samplingYAxis_2(ydPosition + 1) = (samplingYAxis(i) + samplingYAxis(i + 1))/SAMPLING_RATE;
+    endif
+  endfor
   
   
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -72,9 +80,9 @@ function linear_mode(modeChoice = 1)
   
   %affichage de la figure avec en intégrant la configuration précédente
   close all; 
-  plot(samplingXAxis, samplingYAxis,'r')          % signal d'origine
+  plot(samplingXAxis, samplingYAxis,'ob')          % signal d'origine
   hold on 
-  plot(samplingXAxis_2, samplingYAxis_2, 'b')     % signal sur-echantillone
+  plot(samplingXAxis_2, samplingYAxis_2, 'xr')     % signal sur-echantillone
   
   title(figureTitle);        
   xlabel(xTitle);                  

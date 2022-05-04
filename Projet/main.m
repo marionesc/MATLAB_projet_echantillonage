@@ -21,8 +21,16 @@ PROJECT_MESSAGE =       'You are in project mode. Choose the mode.'
 INPUT_INTERFACE_TITLE = 'User values inputs'
 
 %% Initialization of others variables
-DEMO = 0;
+DEMO = 0;             
 PROJECT = 1;
+
+INTERP = 1; 
+ZEROPADDING = 2; 
+LINEAR = 3;
+
+yBit = 0;    % delete bit variable
+yLenght = length(y); 
+ySize = size(y); 
 
 %%%%%%%%%%%%%%%
 %% MAIN CODE %%
@@ -50,15 +58,15 @@ switch(modeChoice)
     switch(projectMode)                                                                   
       case 1 
         %% enter on interpolation vision
-        remove_bits(y,t);
+        remove_bits(INTERP);
         inter_mode();
       case 2
         %% enter on zero-padding vision
-        remove_bits(y,t); 
+        remove_bits(ZEROPADDING);
         zero_padding_mode();
       case 3
         %% enter on linear vision
-        linear_mode(PROJECT);
+        remove_bits(LINEAR);
     end
 
   case 'Quit'
