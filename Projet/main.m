@@ -67,6 +67,7 @@ switch(modeChoice)
       case 3
         %% enter on linear vision
         remove_bits(LINEAR);
+        
     end
 
   case 'Quit'

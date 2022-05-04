@@ -10,7 +10,6 @@ function remove_bits(projectMode = 3)
   load signal1; 
   ySize = length(y);
   display(ySize);
-  y_t = y; 
   
   %% INITALIZATION OF MESSAGE
   nRemoveMessage = "number of bit to delete "; 
@@ -49,7 +48,7 @@ function remove_bits(projectMode = 3)
          for i = 0 : ySize
             yBit = bitshift(y, -numberOfDelete);    
          endfor
-         plot(t, yBit)
+         plot(t, yBit, 'xr')
          linear_mode(1, t , y, yBit);
     end
 endfunction

@@ -4,14 +4,13 @@
 ##                    YOHANN DELAVEAUX
 ##                    JULIEN ARNAUDIES
 ##
-## Created: 2022-03-23
+## Created: 2022-05-04
 
 %  modeChoice = 1 : pour pouvoir débugger seulement ce fichier si besoin en mode project
 
 function linear_mode(modeChoice = 1, t, y, yBit)  
- SAMPLING_RATE = 2; % imposé pour le mode lineaire
- yLenght = length(y); 
- ySize = size(y); 
+ SAMPLING_RATE = 2; % imposé pour le mode lineaire 
+ 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%                    CONFIGURATION EN FONCTION DU MODE                %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,19 +40,23 @@ function linear_mode(modeChoice = 1, t, y, yBit)
       samplingTime = projectSamplingTime;
       samplingPeriod = 1/projectSamplingFrequency; 
       samplingXAxis = t;
-      samplingYAxis = yBit; 
+      samplingYAxis = yBit;
     end
   
-  % Sur echantillonage du signal 
-  samplingXAxis_2 = [0 : samplingPeriod/2 : samplingTime]
-  for i = 1 : yLenght
-    ydPosition = (2 * i) - 1; 
-    samplingYAxis_2(ydPosition) = samplingYAxis(i)
-    if i < yLenght 
-      samplingYAxis_2(ydPosition + 1) = (samplingYAxis(i) + samplingYAxis(i + 1))/SAMPLING_RATE;
+  % Sur echantillonage du signal
+  yBitSize = size(samplingYAxis);
+  
+  for i = 1 : yBitSize(2)
+    %ydPosition = (2 * i) - 1; 
+    % on position les valeurs d'origines dans les cases impaires du tableau
+    samplingYAxis_2((2 * i) - 1) = samplingYAxis(i);
+    if i < yBitSize(2)
+      % on position les valeurs calculées dans les cases paires du tableau
+      samplingYAxis_2((2 * i)) = (samplingYAxis(i) + samplingYAxis(i + 1))/SAMPLING_RATE;
     endif
   endfor
   
+  samplingXAxis_2 = 0 : samplingPeriod/2 : samplingTime;
   
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%                      AFFICHAGE DES RESULTATS                      %%%
@@ -61,7 +64,6 @@ function linear_mode(modeChoice = 1, t, y, yBit)
  % Ajout d'une possibilité de configuration de la figure par l'utilisateur
    legengeSettings = questdlg('Do you want to change the captions?', 'Caption', ...
                               'Yes','No', 'No') 
-  
 
   switch(legengeSettings)
     case 'Yes'         
