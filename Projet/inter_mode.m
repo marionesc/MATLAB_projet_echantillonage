@@ -4,7 +4,8 @@
 ##                    YOHANN DELAVEAUX
 ##                    JULIEN ARNAUDIES
 ##
-## Created: 2022-03-23
+## Created:     2022-03-23
+## Last update: 2022-05-22  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %% INTER MODE FUNCTION %%
@@ -12,7 +13,7 @@
 function inter_mode(t, y, ybit)
   
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%  ENTREE DES VALEURS UTILISATEUR - MODE INTERPOLATION (PROJECT ONLY)  %%%
+ %%%         USER VALUES INPUT - INTERPOLATION MODE(PROJECT ONLY)         %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   projectSamplingRate = str2num(inputdlg({'Sampling Rate :'}, ...
                                           'User values inputs', [1 30]));
@@ -23,7 +24,7 @@ function inter_mode(t, y, ybit)
 
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%      CALCULS &CONFIGURATIONS - MODE INTERPOLATION (PROJECT ONLY)     %%%
+ %%%      CALCULS & CONFIGURATIONS - INTERPOLATION MODE (PROJECT ONLY)    %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
  
@@ -32,9 +33,9 @@ function inter_mode(t, y, ybit)
  
  
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%     AFFICHAGE DE(S) FIGURE(S) - MODE INTERPOLATION (PROJECT ONLY)    %%%
+ %%%       DISPLAY OF FIGURE(S) - MODE INTERPOLATION (PROJECT ONLY)       %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- % Ajout d'une possibilité de configuration de la figure par l'utilisateur
+ % Added possibility of configuration of the figure by the user
  legengeSettings = questdlg('Do you want to change the captions?', 'Caption', ...
                             'yes','No', 'No') 
  switch(legengeSettings)
@@ -52,12 +53,15 @@ function inter_mode(t, y, ybit)
       figureTitle = 'Amplitude of the signal as a function of time';
   end
 
-  %affichage de la figure avec en intégrant la configuration précédente
-  close all; 
-  plot(x,y ,'r')          % signal d'origine
+  % display of the figure with by integrating the previous configuration
+  close all;
+  % Original signal
+  plot(x,y ,'r')
   hold on 
-  plot(x_2, y_2, 'b')     % signal sur-echantillone
-
+  
+  % Over-sampling signal
+  plot(x_2, y_2, 'b')
+  
   title(figureTitle);        
   xlabel(xTitle);                  
   ylabel(yTitle);   

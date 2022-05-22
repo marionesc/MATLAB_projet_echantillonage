@@ -4,7 +4,8 @@
 ##                    YOHANN DELAVEAUX
 ##                    JULIEN ARNAUDIES
 ##
-## Created: 2022-03-23
+## Created:     2022-03-23
+## Last update: 2022-05-22  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ZERO PADDING MODE FUNCTION %%
@@ -12,23 +13,21 @@
 function zero_padding_mode(t, y, samplingRate, yBit) 
   
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%   ENTREE DES VALEURS UTILISATEUR - MODE ZERO-PADDING (PROJECT ONLY)  %%%
+ %%%         USER VALUES INPUT - ZERO-PADDING MODE (PROJECT ONLY)         %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      
- prompt1 = "Sampling Frequency";
- prompt2 = "Sampling Time ";
- userInput = inputdlg({prompt1, prompt2},...
+ userInput = inputdlg({"Sampling Frequency", "Sampling Time "},...
                        'User values inputs', [1,30 ; 1,30], {1000, 1});
                             
  projectSamplingFrequency = str2num(cell2mat(userInput(1)));
- projectSamplingTime = str2num(cell2mat(userInput(2)));
+ projectSamplingTime      = str2num(cell2mat(userInput(2)));
                                                
- % Calculs des autres valeurs nessaires
+ % Calculations of other necessary values
  samplingTime = projectSamplingTime;
  samplingPeriod = 1/projectSamplingFrequency; 
   
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%      CALCULS &CONFIGURATIONS - MODE ZERO-PADDING (PROJECT ONLY)      %%%
+ %%%      CALCULS & CONFIGURATIONS - ZERO-PADDING MODE(PROJECT ONLY)      %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%% FIRST STEP --> Creation of the original FFT and division into two parts
  % On signal sampling by zero padding mode
@@ -57,9 +56,9 @@ function zero_padding_mode(t, y, samplingRate, yBit)
  
  
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%     AFFICHAGE DE(S) FIGURE(S) - MODE ZERO-PADDING (PROJECT ONLY)     %%%
+ %%%       DISPLAY OF FIGURE(S) - MODE ZERO-PADDING (PROJECT ONLY)        %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- % Ajout d'une possibilité de configuration de la figure par l'utilisateur
+ % Added possibility of configuration of the figure by the user
  legengeSettings = questdlg('Do you want to change the captions?', 'Caption', ...
                             'Yes','No', 'No') 
  switch(legengeSettings)
@@ -77,12 +76,14 @@ function zero_padding_mode(t, y, samplingRate, yBit)
       figureTitle = 'Amplitude of the signal as a function of time';
   end
   
-  %affichage des figures avant/apres 
-  display(t_size = length(t))
-
-  plot(t, yBit        , 'ob')     % signal d'origine
+  % display of the figure with by integrating the previous configuration
+  close all;
+  % Original signal
+  plot(t, yBit, 'ob')
   hold on 
-  plot(fft_tZPfinal , fft_yZPfinal, 'xr')     % signal sur-echantillone
+  
+  % Over-sampling signal
+  plot(fft_tZPfinal , fft_yZPfinal, 'xr')
   
   title(figureTitle);        
   xlabel(xTitle);                  

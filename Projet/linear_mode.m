@@ -4,31 +4,32 @@
 ##                    YOHANN DELAVEAUX
 ##                    JULIEN ARNAUDIES
 ##
-## Created: 2022-05-04
+## Created:     2022-05-04
+## Last update: 2022-05-22  
 
-%  modeChoice = 1 : pour pouvoir débugger seulement ce fichier si besoin en mode project
+
 
 function linear_mode(modeChoice = 1, t , y, yBit)  
  SAMPLING_RATE = 2; % imposé pour le mode lineaire 
 
  
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%                    CONFIGURATION EN FONCTION DU MODE                %%%
+ %%%             CONFIGURATION BETWEEN DEMO OR PROJECT MODE              %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   switch(modeChoice)
     case 0 % DEMO 
-      % Valeur par defaut du mode DEMO
+      % Default values for demo mode
       DEMO_SAMPLING_TIME = 10;
       DEMO_SAMPLING_FREQUENCY = 10;
       
-      % Calculs des autres valeurs nessaires
+      % Calculations of other necessary values
       samplingTime = DEMO_SAMPLING_TIME;
       samplingPeriod = 1/DEMO_SAMPLING_FREQUENCY; 
       samplingXAxis = [0 : samplingPeriod : DEMO_SAMPLING_TIME];
       samplingYAxis = sin(pi/2*samplingXAxis); %% +132 ???
 
     case 1 % PROJECT
-      % Entree des valeurs du Mode PROJECT par l'utilisateur
+      % User input of PROJECT Mode values
       prompt1 = "Sampling Frequency";
       prompt2 = "Sampling Time ";
       userInput = inputdlg({prompt1, prompt2},...
@@ -37,22 +38,22 @@ function linear_mode(modeChoice = 1, t , y, yBit)
       projectSamplingFrequency = str2num(cell2mat(userInput(1)));
       projectSamplingTime = str2num(cell2mat(userInput(2)));
     
-      % Calculs des autres valeurs nessaires
+      % Calculations of other necessary values
       samplingTime = projectSamplingTime;
       samplingPeriod = 1/projectSamplingFrequency; 
       samplingXAxis = t;
       samplingYAxis = yBit;
     end
   
-  % Sur echantillonage du signal
-  yBitSize = size(samplingYAxis);
+  % Signal oversampling
+  yBitSize = length(samplingYAxis);
   
-  for i = 1 : yBitSize(2)
-    %ydPosition = (2 * i) - 1; 
-    % on position les valeurs d'origines dans les cases impaires du tableau
+  for i = 1 : yBitSize
+    % we position the original values in the odd cells of the table
     samplingYAxis_2((2 * i) - 1) = samplingYAxis(i);
-    if i < yBitSize(2)
-      % on position les valeurs calculées dans les cases paires du tableau
+    
+    % We position the calculated values in the even cells of the table
+    if i < yBitSize
       samplingYAxis_2((2 * i)) = (samplingYAxis(i) + samplingYAxis(i + 1))/SAMPLING_RATE;
     endif
   endfor
@@ -60,9 +61,9 @@ function linear_mode(modeChoice = 1, t , y, yBit)
   samplingXAxis_2 = 0 : samplingPeriod/2 : samplingTime;
   
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%                      AFFICHAGE DES RESULTATS                      %%%
+ %%%      DISPLAY OF FIGURE(S) - LINEAR MODE (DEMO 1 PROJECT MODE      %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- % Ajout d'une possibilité de configuration de la figure par l'utilisateur
+ % Added possibility of configuration of the figure by the user
    legengeSettings = questdlg('Do you want to change the captions?', 'Caption', ...
                               'Yes','No', 'No') 
 
@@ -81,11 +82,14 @@ function linear_mode(modeChoice = 1, t , y, yBit)
       figureTitle = 'amplitude of the signal as a function of time';
   end
   
-  %affichage de la figure avec en intégrant la configuration précédente
+  % display of the figure with by integrating the previous configuration
   close all; 
-  plot(samplingXAxis, samplingYAxis,'ob')          % signal d'origine
+  % Original signal
+  plot(samplingXAxis, samplingYAxis,'ob')
   hold on
-  plot(samplingXAxis_2, samplingYAxis_2, 'xr')     % signal sur-echantillone
+  
+  % Over-sampling signal
+  plot(samplingXAxis_2, samplingYAxis_2, 'xr')
   
   title(figureTitle);        
   xlabel(xTitle);                  

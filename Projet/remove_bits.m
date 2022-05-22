@@ -4,7 +4,8 @@
 ##                    YOHANN DELAVEAUX
 ##                    JULIEN ARNAUDIES
 ##
-## Created: 2022-04-11
+## Created:     2022-04-11
+## Last update: 2022-05-22  
 
 function remove_bits(projectMode = 2)
   close all; 
