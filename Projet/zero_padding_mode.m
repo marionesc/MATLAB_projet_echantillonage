@@ -4,8 +4,18 @@
 ##                    YOHANN DELAVEAUX
 ##                    JULIEN ARNAUDIES
 ##
+## Github : maesc
+##
 ## Created:     2022-03-23
 ## Last update: 2022-05-22  
+## linear_mode.m  --> file and function allowing the application of the zero-padding method
+##                --> requires file & function 'bit_delete.m' to work properly
+##                    @param             t : time variable in abscissa of the original signal (signal1)
+##                    @param             y : original signal ordinate data variable (signal1)
+##                    @param  samplingRate : signal sampling rate
+##                    @param          yBit : variable of the data in ordinate of the signal after the use of the bitshift
+##                    no @return
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ZERO PADDING MODE FUNCTION %%

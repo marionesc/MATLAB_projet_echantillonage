@@ -4,8 +4,16 @@
 ##                    YOHANN DELAVEAUX
 ##                    JULIEN ARNAUDIES
 ##
+## Github : maesc
+##
 ## Created:     2022-04-11
 ## Last update: 2022-05-22  
+##
+## linear_mode.m  --> file and function allowing the application of the bitshift application used for all method
+##                    @param projectMode : Project's choice between Interp method (1, default value),
+##                                         Zero-padding method (2) or linear method (3) 
+##                    no @return
+
 
 function remove_bits(projectMode = 1)
   close all; 

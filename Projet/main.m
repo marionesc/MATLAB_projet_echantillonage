@@ -4,7 +4,16 @@
 ##                    YOHANN DELAVEAUX
 ##                    JULIEN ARNAUDIES
 ##
-## Created: 2022-03-23
+## Github : maesc
+##
+## Created:     2022-03-23
+## Last update: 2022-05-22
+##
+##
+## main.m --> File containing the entire main launch of the project
+##            no @param
+##            no @return
+
 clear all; 
 close all; 
 
