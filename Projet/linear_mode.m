@@ -11,7 +11,7 @@
 ##
 ## linear_mode.m  --> file and function allowing the application of the linear method
 ##                --> requires file & function 'bit_delete.m' to work properly
-##                    @param    modeChoice : choice between demo mode (0) or project mode (1)
+##                    @param    modeChoice : choice between demo mode (0) or project mode (1, default value)
 ##                    @param             t : time variable in abscissa of the original signal (signal1)
 ##                    @param             y : original signal ordinate data variable (signal1)
 ##                    @param          yBit : variable of the data in ordinate of the signal after the use of the bitshift
