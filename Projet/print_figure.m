@@ -1,4 +1,4 @@
-function print_figure(x, f_x)
+function print_figure()
   legengeSettings = questdlg('Voulez vous personnaliser les légendes ?', 'Légende', ...
                 'Oui','Non', 'Non') 
   
@@ -20,7 +20,7 @@ function print_figure(x, f_x)
       figureTitle = 'valeurs de f(x) --> x ';
   end
   
-  plot(x, f_x);
-  xlabel(xTitle); ylabel(yTitle); 
+  xlabel(xTitle); 
+  ylabel(yTitle); 
   title(figureTitle,'FontSize',20);
 endfunction  

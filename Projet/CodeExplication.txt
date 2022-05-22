@@ -33,17 +33,35 @@ ex : menuPrincipale = questiondlg("Menu Principale", 	// mise en forme supérieu
 				  " Bouton 1 ", 	// mise en forme du premier bouton 
 				  " Bouton 2 ", 	// mise en forme du bouton 2
 				  " Quitter ")		// Mise en forme du 3eme bouton
- 
+
+	- questdlg() : opermet de faire apparaître un interface de rentrée de données utilsateurs (return char)
+ex :   projectSamplingRate = inputdlg({'Sampling Rate :'}, ... 			//commentaire sur la donnée à remplir
+                                       ' entrée des valeurs utilisateurs',	//légendes de l'interface
+						   [1 30]));			//taille de la case d'entrée de données
 	- menu() : permet d'afficher une interface de menu déroulant
 ex : menu = menu("Choix du mode", 			// mise en forme du corps de l'interface
 		 " Choix 1 ", 				// 1er choix de la liste
 		 " Choix 2 ", 				// 2e choix de la liste 
 		 " Choix x ") 				// choix x de la liste
 
-	- switch() ... case  :  fonction conditionnel exicutant une certaine partie du code en fonction 
-				de la valeur d'une variable choisie
+	- switch() ... case  :  fonction conditionnel exécutant une certaine partie du code en fonction 
+					de la valeur d'une variable choisie
 
+	- plot(x, y, color code (Facultatif)) ; permet d'afficher une figure 
+		color code : 'r' --> rouge
+				 'g' --> vert
+				 'b' --> bleu
+				 'c' --> cyan
+				 'm' --> violet
+				 'y' --> jaune
+				 'k' --> noir
+				 'w' --> blanc
+				 --> il est aussi posssible de rentrer une code couleur hexadecimal 
 
+	- str2double() : permet de transformer une chaîne de caractère rentrée grâce à la fonction questdlg()
+		   	     sous la forme d'un double/entier
+
+	- zeros() ; permet de creer un table de n dimension rempli de 0 dans chacune de ses cases
 
 
 Règle de mise en forme appliqué : convention CAMEL CASE 
@@ -57,6 +75,6 @@ Règle de mise en forme appliqué : convention CAMEL CASE
 - Pour les fonctions 		--> Dans le fichier .m correspondant (meme nom que le fichier)
 	ECRITURE : nom_fonction
 	CONVENTION 1 : si la fonction a pour but d'obtenir une valeur alors préfice get
-	CONVENTION 2 : si la fonction a pour but f=d'appliquer une valeur alors préfice set
+	CONVENTION 2 : si la fonction a pour but d'appliquer une valeur alors préfice set
 	
 		
