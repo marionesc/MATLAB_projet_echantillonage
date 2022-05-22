@@ -18,10 +18,10 @@
 ##                    no @return
 
 
-function linear_mode(modeChoice = 1, t , y, yBit)  
- SAMPLING_RATE = 2; % imposé pour le mode lineaire 
+function linear_mode(modeChoice = 1, t , y, yBit) 
+  % CONSTANT : imposed by the linear method
+  SAMPLING_RATE = 2; 
 
- 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%             CONFIGURATION BETWEEN DEMO OR PROJECT MODE              %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,7 +91,7 @@ function linear_mode(modeChoice = 1, t , y, yBit)
       figureTitle = 'amplitude of the signal as a function of time';
   end
   
-  % display of the figure with by integrating the previous configuration
+  % display of the figure by integrating the previous configuration
   close all; 
   % Original signal
   plot(samplingXAxis, samplingYAxis,'ob')
