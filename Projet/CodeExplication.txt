@@ -75,6 +75,6 @@ Règle de mise en forme appliqué : convention CAMEL CASE
 - Pour les fonctions 		--> Dans le fichier .m correspondant (meme nom que le fichier)
 	ECRITURE : nom_fonction
 	CONVENTION 1 : si la fonction a pour but d'obtenir une valeur alors préfice get
-	CONVENTION 2 : si la fonction a pour but f=d'appliquer une valeur alors préfice set
+	CONVENTION 2 : si la fonction a pour but d'appliquer une valeur alors préfice set
 	
 		
