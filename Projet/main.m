@@ -24,6 +24,7 @@ plot(t, y);
 %% INITIALIZATION %%
 %%%%%%%%%%%%%%%%%%%%
 %% Initialization of global message
+
 CHOICE_MODE_MESSAGE =   'Choose the mode that you want to launch.'
 DEMO_MESSAGE =          'You are in demo mode.'
 PROJECT_MESSAGE =       'You are in project mode. Choose the method.'
