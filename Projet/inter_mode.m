@@ -33,12 +33,13 @@ function inter_mode(t, y, yBit, samplingRate)
  projectSamplingTime      = str2num(cell2mat(userInput(2)));
                                                
 
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%      CALCULS & CONFIGURATIONS - INTERPOLATION MODE (PROJECT ONLY)    %%%
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-interp_t = 0:(1/(samplingRate*projectSamplingFrequency)):projectSamplingTime ;
-
-interp_y = interp1(t,yBit,interp_t);       % using generic function "interp1"
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%      CALCULS & CONFIGURATIONS - INTERPOLATION MODE (PROJECT ONLY)    %%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  interp_t = 0 : (1/(samplingRat * projectSamplingFrequenc)) : projectSamplingTime ;
+  
+  % using generic function "interp1"
+  interp_y = interp1(t,yBit,interp_t);       
 
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,7 +63,7 @@ interp_y = interp1(t,yBit,interp_t);       % using generic function "interp1"
       figureTitle = 'Amplitude of the signal as a function of time';
   end
 
-  % display of the figure with by integrating the previous configuration
+  % display of the figure by integrating the previous configuration
   close all;
   % Original signal
   plot(t,yBit ,'ob')
@@ -75,8 +76,4 @@ interp_y = interp1(t,yBit,interp_t);       % using generic function "interp1"
   xlabel(xTitle);                  
   ylabel(yTitle);   
   legend("Original signal", "Over-sampled signal");
- 
- 
- 
- 
 endfunction
