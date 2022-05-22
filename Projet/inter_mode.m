@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %% INTER MODE FUNCTION %%
 %%%%%%%%%%%%%%%%%%%%%%%%%
-function inter_mode()
+function inter_mode(t, y, ybit)
   
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%  ENTREE DES VALEURS UTILISATEUR - MODE INTERPOLATION (PROJECT ONLY)  %%%

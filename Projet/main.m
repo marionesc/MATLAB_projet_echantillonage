@@ -59,15 +59,17 @@ switch(modeChoice)
       case 1 
         %% enter on interpolation vision
         remove_bits(INTERP);
-        inter_mode();
+        %% inter_mode() directly called on remove_bits() function
+        
       case 2
         %% enter on zero-padding vision
         remove_bits(ZEROPADDING);
-        zero_padding_mode();
+        %% zero_padding_mode() directly called on remove_bits() function
+        
       case 3
         %% enter on linear vision
         remove_bits(LINEAR);
-        
+        %% linear_mode directly called on remove_bits() function
     end
 
   case 'Quit'

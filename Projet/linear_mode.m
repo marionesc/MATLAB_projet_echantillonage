@@ -8,8 +8,9 @@
 
 %  modeChoice = 1 : pour pouvoir débugger seulement ce fichier si besoin en mode project
 
-function linear_mode(modeChoice = 1, t, y, yBit)  
+function linear_mode(modeChoice = 1, t , y, yBit)  
  SAMPLING_RATE = 2; % imposé pour le mode lineaire 
+
  
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%                    CONFIGURATION EN FONCTION DU MODE                %%%
@@ -24,7 +25,7 @@ function linear_mode(modeChoice = 1, t, y, yBit)
       samplingTime = DEMO_SAMPLING_TIME;
       samplingPeriod = 1/DEMO_SAMPLING_FREQUENCY; 
       samplingXAxis = [0 : samplingPeriod : DEMO_SAMPLING_TIME];
-      samplingYAxis = sin(pi/2*samplingXAxis);
+      samplingYAxis = sin(pi/2*samplingXAxis); %% +132 ???
 
     case 1 % PROJECT
       % Entree des valeurs du Mode PROJECT par l'utilisateur
@@ -83,12 +84,11 @@ function linear_mode(modeChoice = 1, t, y, yBit)
   %affichage de la figure avec en intégrant la configuration précédente
   close all; 
   plot(samplingXAxis, samplingYAxis,'ob')          % signal d'origine
-  hold on 
+  hold on
   plot(samplingXAxis_2, samplingYAxis_2, 'xr')     % signal sur-echantillone
   
   title(figureTitle);        
   xlabel(xTitle);                  
   ylabel(yTitle);   
   legend("Original signal", "Over-sampled signal");
-  
 endfunction
