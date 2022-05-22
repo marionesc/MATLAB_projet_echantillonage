@@ -10,28 +10,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %% INTER MODE FUNCTION %%
 %%%%%%%%%%%%%%%%%%%%%%%%%
-function inter_mode(t, y, ybit)
+function inter_mode(t, y, yBit, samplingRate)
   
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%         USER VALUES INPUT - INTERPOLATION MODE(PROJECT ONLY)         %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  projectSamplingRate = str2num(inputdlg({'Sampling Rate :'}, ...
-                                          'User values inputs', [1 30]));
-  projectSamplingTime = str2num(inputdlg({'Sampling Time :'}, ...
-                                          'User values inputs', [1 30]));
-  projectSamplingFrequency = str2num(inputdlg({'Sampling frequency :'}, ...
-                                               'User values inputs', [1 30]));
-
+ userInput = inputdlg({"Sampling Frequency", "Sampling Time "},...
+                       'User values inputs', [1,30 ; 1,30], {1000, 1});
+                            
+ projectSamplingFrequency = str2num(cell2mat(userInput(1)));
+ projectSamplingTime      = str2num(cell2mat(userInput(2)));
+                                               
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%      CALCULS & CONFIGURATIONS - INTERPOLATION MODE (PROJECT ONLY)    %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
- 
- 
- 
- 
- 
+interp_t = 0:(1/(samplingRate*projectSamplingFrequency)):projectSamplingTime ;
+
+interp_y = interp1(t,yBit,interp_t);       % using generic function "interp1"
+
+
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %%%       DISPLAY OF FIGURE(S) - MODE INTERPOLATION (PROJECT ONLY)       %%%
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,11 +54,11 @@ function inter_mode(t, y, ybit)
   % display of the figure with by integrating the previous configuration
   close all;
   % Original signal
-  plot(x,y ,'r')
+  plot(t,yBit ,'ob')
   hold on 
   
   % Over-sampling signal
-  plot(x_2, y_2, 'b')
+  plot(interp_t, interp_y, 'xr')
   
   title(figureTitle);        
   xlabel(xTitle);                  

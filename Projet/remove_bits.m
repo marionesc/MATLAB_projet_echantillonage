@@ -7,7 +7,7 @@
 ## Created:     2022-04-11
 ## Last update: 2022-05-22  
 
-function remove_bits(projectMode = 2)
+function remove_bits(projectMode = 1)
   close all; 
   load signal1; 
   plot(t, y) 
@@ -29,7 +29,7 @@ function remove_bits(projectMode = 2)
             yBit = bitshift(y, -numberOfDelete);    
          endfor  
          % plot(t, yBit, 'g')   FOR DEBBUG ONLY
-         inter_mode(t , y, yBit);
+         inter_mode(t , y, yBit, samplingRate);
          
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%% ZERO-PADDING MODE %%%%%         
