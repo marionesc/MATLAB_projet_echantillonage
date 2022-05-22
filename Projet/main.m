@@ -24,9 +24,9 @@ plot(t, y);
 %% INITIALIZATION %%
 %%%%%%%%%%%%%%%%%%%%
 %% Initialization of global message
-CHOICE_MODE_MESSAGE =   'Choose the mode do you want to launch.'
+CHOICE_MODE_MESSAGE =   'Choose the mode that you want to launch.'
 DEMO_MESSAGE =          'You are in demo mode.'
-PROJECT_MESSAGE =       'You are in project mode. Choose the mode.'
+PROJECT_MESSAGE =       'You are in project mode. Choose the method.'
 INPUT_INTERFACE_TITLE = 'User values inputs'
 
 %% Initialization of others variables
@@ -53,36 +53,36 @@ modeChoice = questdlg(CHOICE_MODE_MESSAGE, 'Mode choice', ...
                         
 switch(modeChoice)
   case 'Demo' 
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %% enter on demo mode interface
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% entering at demo mode interface
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     linear_mode(DEMO);
     
   
   case 'Project' 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %% enter on the project mode interface
+    %% entering at the project mode interface
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     projectMode = menu(PROJECT_MESSAGE, 'interpolation', 'zero-padding', 'linear');
     switch(projectMode)                                                                   
       case 1 
-        %% enter on interpolation vision
+        %% entering on interpolation vision
         remove_bits(INTERP);
         %% inter_mode() directly called on remove_bits() function
         
       case 2
-        %% enter on zero-padding vision
+        %% entering on zero-padding vision
         remove_bits(ZEROPADDING);
         %% zero_padding_mode() directly called on remove_bits() function
         
       case 3
-        %% enter on linear vision
+        %% entering on linear vision
         remove_bits(LINEAR);
         %% linear_mode directly called on remove_bits() function
     end
 
   case 'Quit'
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %% Quit the global project (break)
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% You quit the global project (break)
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 end
